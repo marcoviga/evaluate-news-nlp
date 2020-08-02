@@ -4,6 +4,7 @@ export async function handleSubmit(event) {
     let textToAnalyse = document.querySelector('#input-text').value;
 
     Client.getSentiment(textToAnalyse)
+        .then(res => res.json())
         .then(res => {
             document.querySelector('#polarity').innerHTML = `Polarity: ${res.polarity}`;
             document.querySelector('#subjectivity').innerHTML = `Subjectivity: ${res.subjectivity}`;

@@ -40,7 +40,7 @@ app.post('/sentiment', [
         return res.status(422).json({errors: errors.array()})
     }
 
-    res.send({
+    res.status(200).send({
         "polarity":"positive",
         "subjectivity":"subjective",
         "text":"John is a very good football player",

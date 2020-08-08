@@ -7,7 +7,7 @@ const { check, validationResult } = require('express-validator');
 const cors = require("cors");
 
 // express app
-const port = process.env.PORT || 8008;
+const port = process.env.PORT || 8009;
 const app = express();
 
 // express configurations
@@ -40,13 +40,16 @@ app.post('/sentiment', [
         return res.status(422).json({errors: errors.array()})
     }
 
-    res.status(200).send({
-        "polarity":"positive",
-        "subjectivity":"subjective",
-        "text":"John is a very good football player",
-        "polarity_confidence":0.9999936601153382,
-        "subjectivity_confidence":0.9963778207617525
-    })
+    res.status(200)
+            // .setHeader('Access-Control-Allow-Origin', 'http:localhost:8008')
+            // .setHeader('Access-Control-Allow-Methods','*')
+        .send({
+            "polarity":"positive",
+            "subjectivity":"subjective",
+            "text":"John is a very good football player",
+            "polarity_confidence":0.9999936601153382,
+            "subjectivity_confidence":0.9963778207617525
+        })
 
     // textapi.sentiment(
     //     {

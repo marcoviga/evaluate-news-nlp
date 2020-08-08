@@ -2,37 +2,26 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Article NLP</title>
+        <title>NLP NEWS APP</title>
     </head>
     <body>
-        <header>
-            <div class="">
-                Logo
-            </div>
-            <div class="">
-                navigation
-            </div>
-        </header>
-        <main>
-            <section>
-                <form class="input-area">
-                    <input id="input-text" type="text" name="input" placeholder="Place here your text">
-                    <input id="submit-botton" type="submit" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
-                </form>
-            <section>
 
-            <section>
-                <strong>Results:</strong>
-                <div id="polarity"></div>
-                <div id="subjectivity"></div>
-                <div id="polarity_confidence"></div>
-                <div id="subjectivity_confidence"></div>
-            </section>
-        </main>
+    <div id = "app">
 
-        <footer>
-            <p>This is a footer</p>
-        </footer>
+        <div class="input" >
+            <form class="input-area">
+                <textarea id="input-text" placeholder="Write something here..."></textarea>
+                <input id="submit-botton" type="submit" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
+            </form>
+        </div>
 
+        <div class="output">
+            <div id="polarity"></div>
+            <div id="subjectivity"></div>
+            <div id="polarity_confidence"></div>
+            <div id="subjectivity_confidence"></div>
+        </div>
+
+    </div>
     </body>
 </html>

@@ -8,9 +8,11 @@ module.exports = {
     entry: './src/client/index.js',
     mode: 'production',
     output: {
-        path: path.resolve(__dirname, 'dist'),
         libraryTarget: 'var',
         library: 'Client'
+    },
+    devServer: {
+        port: 8008,
     },
     module: {
         rules: [
@@ -22,7 +24,6 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
                     "css-loader",
                     "sass-loader"
                 ]
@@ -34,6 +35,5 @@ module.exports = {
             template: "./src/client/views/index.html",
             filename: "./index.html",
         }),
-        new MiniCssExtractPlugin({filename: '[name].css'})
     ]
 };

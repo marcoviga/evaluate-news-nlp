@@ -1,5 +1,5 @@
 export async function getSentiment(textInput) {
-    return fetch(`http://localhost:8008/sentiment`, {
+    return fetch(`http://localhost:8009/sentiment`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

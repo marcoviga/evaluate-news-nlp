@@ -9,8 +9,11 @@ module.exports = {
     mode: 'development',
     devtool: 'source-map',
     stats: 'verbose',
+    devServer: {
+        host: 'localhost',
+        port: 8008,
+    },
     output: {
-        path: path.resolve(__dirname, 'dist'),
         libraryTarget: 'var',
         library: 'Client'
     },
@@ -23,23 +26,19 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: [MiniCssExtractPlugin.loader, "style-loader", "css-loader", "sass-loader"]
+                use: ["style-loader", "css-loader", "sass-loader"]
             }
         ]
     },
-    // devServer: {
-    //     inline:true,
-    //     port: 8008,
-    //     hot: true
-    // },
     plugins: [
         new HtmlWebPackPlugin({
             template: "./src/client/views/index.html",
             filename: "./index.html",
         }),
         new CleanWebpackPlugin({
+            cleanOnceBeforeBuildPatterns: ['**/*'],
             // Simulate the removal of files
-            dry: true,
+            // dry: true,
             // Write Logs to Console
             verbose: true,
             // Automatically remove all unused webpack assets on rebuild

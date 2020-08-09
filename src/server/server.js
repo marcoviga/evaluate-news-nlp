@@ -40,7 +40,7 @@ app.post('/sentiment', [
         return res.status(422).json({errors: errors.array()})
     }
 
-    textapi.sentiment(
+    return textapi.sentiment(
         {
             text: req.body.content,
             mode: 'tweet'

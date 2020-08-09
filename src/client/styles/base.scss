@@ -5,9 +5,9 @@
     grid-gap: 1em;
     font-size: 15px;
     grid-template-columns: 5% 1fr 5%;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 0.4fr 1fr 1fr;
     grid-template-areas:
-            '. head-area .'
+            '. header-area .'
             '. input-area .'
             '. output-area .'
 }
@@ -26,13 +26,12 @@ form {
     padding: 40px;
 }
 
-.head {
+.header {
     display: flex;
     justify-content: center;
-    grid-area: head-area;
-    //justify-content: space-between;
+    grid-area: header-area;
     padding: 10px 40px;
-    font-size: 10px;
+    font-size: 30px;
 }
 
 .input {

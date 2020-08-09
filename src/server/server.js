@@ -20,12 +20,12 @@ app.use(cors());
 require('dotenv').config();
 
 //aylientApi
-// const AYLIENTextAPI = require('aylien_textapi');
-//
-// const textapi = new AYLIENTextAPI({
-//     application_id: process.env.AYLIENT_APP_ID,
-//     application_key: process.env.AYLIENT_APP_KEY
-// });
+const AYLIENTextAPI = require('aylien_textapi');
+
+const textapi = new AYLIENTextAPI({
+    application_id: process.env.AYLIENT_APP_ID,
+    application_key: process.env.AYLIENT_APP_KEY
+});
 
 app.listen(port, () => {
     console.log(`express started on http://localhost:${port}`);
@@ -40,30 +40,19 @@ app.post('/sentiment', [
         return res.status(422).json({errors: errors.array()})
     }
 
-    res.status(200)
-            // .setHeader('Access-Control-Allow-Origin', 'http:localhost:8008')
-            // .setHeader('Access-Control-Allow-Methods','*')
-        .send({
-            "polarity":"positive",
-            "subjectivity":"subjective",
-            "text":"John is a very good football player",
-            "polarity_confidence":0.9999936601153382,
-            "subjectivity_confidence":0.9963778207617525
-        })
-
-    // textapi.sentiment(
-    //     {
-    //         text: req.body.content,
-    //         mode: 'tweet'
-    //     },
-    //     function(error, response) {
-    //         if (error === null) {
-    //             res.send(response);
-    //         } else {
-    //             console.log(`Error : ${error}`);
-    //         }
-    //     }
-    // );
+    textapi.sentiment(
+        {
+            text: req.body.content,
+            mode: 'tweet'
+        },
+        function(error, response) {
+            if (error === null) {
+                res.send(response);
+            } else {
+                console.log(`Error : ${error}`);
+            }
+        }
+    );
 });
 
 app.get('/test', function (req, res) {

@@ -13,10 +13,11 @@
 }
 
 body {
-    display: flex;
+    width: 100%;
+    display: block;
     flex-direction: column;
-    min-height: 100vh;
-    background: lightgrey;
+    flex-flow: column nowrap;
+    background: lightyellow;
 }
 
 form {
@@ -45,17 +46,12 @@ form {
 }
 
 #submit-botton{
-    //height: 50%;
-    //width: 80%;
     color: black;
-    font-size: 20px;
-    //font-family: -apple-system, "Inconsolata", sans-serif;
-    margin-top: 1rem;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 15px;
+    margin-top: 2rem;
     padding: 5px;
     background-color: white;
-    border: 5px;
+    border: 2px solid black;
     border-radius: 5px;
     box-shadow: 3px 4px 5px #4444;
 }
@@ -80,6 +76,8 @@ form {
 }
 
 .output {
+    font-size: 20px;
+    color: black;
     display: flex;
     grid-area: output-area;
     justify-content: center;
@@ -89,4 +87,48 @@ form {
     width: 100%;
     line-height: 16px;
     margin: 10px 0;
+}
+
+#polarity{
+    margin-top: 10px;
+}
+
+#subjectivity{
+    margin-top: 10px;
+}
+
+#polarity_confidence{
+    margin-top: 10px;
+}
+
+#subjectivity_confidence{
+    margin-top: 10px;
+}
+
+
+@media(max-width: 500px) {
+
+    #polarity{
+        margin-top: 10px;
+        font-size: 12px;
+    }
+
+    #subjectivity{
+        margin-top: 1px;
+        font-size: 12px;
+
+    }
+
+    #polarity_confidence{
+        margin-top: 1px;
+        font-size: 12px;
+
+    }
+
+    #subjectivity_confidence{
+        margin-top: 1px;
+        font-size: 12px;
+
+    }
+
 }

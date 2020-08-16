@@ -5,7 +5,7 @@ const sut = require('./formHandler');
 const sentimentHandler = require('./sentimentHandler');
 import Client from './sentimentHandler'
 
-it('should display the weather info', async () => {
+it('should get the form filled in', async () => {
 
 
     document.body.innerHTML = `
@@ -24,6 +24,7 @@ it('should display the weather info', async () => {
   `;
     jest.mock('./sentimentHandler');
 
+    //TODO I am getting Client undefined if I run this test
     sentimentHandler.getSentiment = jest.fn().mockResolvedValue({
         data:
             {

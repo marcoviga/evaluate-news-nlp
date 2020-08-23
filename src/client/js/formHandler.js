@@ -1,9 +1,11 @@
+const sentimentHandler = require('./sentimentHandler.js');
+
 export async function handleSubmit(event) {
     event.preventDefault();
 
     let textToAnalyse = document.querySelector('#input-text').value;
 
-    Client.getSentiment(textToAnalyse)
+    sentimentHandler.getSentiment(textToAnalyse)
         .then(res => res.json())
         .then(res => {
             document.querySelector('#polarity').innerHTML = `Polarity: ${res.polarity}`;

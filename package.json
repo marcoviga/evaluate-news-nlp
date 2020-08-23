@@ -8,6 +8,9 @@
     "build-prod": "webpack --config webpack.prod.js",
     "build-dev": "webpack-dev-server --config webpack.dev.js --open"
   },
+  "jest": {
+    "verbose": true
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

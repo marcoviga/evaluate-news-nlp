@@ -1,9 +1,9 @@
 import "@babel/polyfill"
+import fetchMock from "jest-fetch-mock";
 
 const sut = require('./formHandler');
 
-const sentimentHandler = require('./sentimentHandler');
-import Client from './sentimentHandler'
+fetchMock.enableMocks();
 
 it('should get the form filled in', async () => {
 
@@ -22,19 +22,16 @@ it('should get the form filled in', async () => {
             <div id="subjectivity_confidence"></div>
         </div>
   `;
-    jest.mock('./sentimentHandler');
 
-    //TODO I am getting Client undefined if I run this test
-    sentimentHandler.getSentiment = jest.fn().mockResolvedValue({
-        data:
-            {
-                polarity:"positive",
-                subjectivity:"subjective",
-                text:"Lebron is the king",
-                polarity_confidence:0.78,
-                subjectivity_confidence:0.45
-            }
-    });
+    const response = {
+        "polarity":"positive",
+        "subjectivity":"subjective",
+        "text":"Lebron is king",
+        "polarity_confidence":23.4,
+        "subjectivity_confidence":45.4
+    };
+
+    fetch.mockResponseOnce(JSON.stringify(response));
 
     const myMockElement = {
         preventDefault: jest.fn(),
@@ -42,7 +39,10 @@ it('should get the form filled in', async () => {
 
     await sut.handleSubmit(myMockElement);
 
-    expect(document.querySelector('#polarity').innerHTML).toEqual('positive');
+    expect(fetch).toBeCalled();
+    expect(fetch).toHaveBeenCalledTimes(1);
+    // TODO testing dom,
+    // expect(document.querySelector('#polarity').innerHTML).toEqual('positive');
 
 });
 
